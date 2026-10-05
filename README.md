@@ -1,6 +1,3 @@
-Here is the cleaned, properly formatted `README.md` file:
-
-```markdown
 # Houdini OpenGL Flipbook Submitter
 
 A Houdini Digital Asset (HDA) integration and Python toolset designed to streamline OpenGL flipbook rendering and AWS Thinkbox Deadline submission directly within SideFX Houdini.
@@ -34,9 +31,7 @@ The asset acts as a lightweight interface, delegating execution and core logic t
 │           ├── main.py
 │           └── DL_submit.py
 └── README.md
-```
 
----
 
 ## Environment & Path Setup
 
@@ -48,6 +43,7 @@ export HDA_SCRIPTS="/path/to/your/global/scripts"
 ```
 
 The tool expects the package modules to reside at:
+
 ```text
 ${HDA_SCRIPTS}/houdini/python/houdini_opengl_flipbook
 ```
@@ -129,4 +125,4 @@ def update(kwargs):
         traceback.print_exc()
         print("=" * 90)
 ```
-```
+
