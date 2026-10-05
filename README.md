@@ -31,25 +31,24 @@ The asset acts as a lightweight interface, delegating execution and core logic t
 │           ├── main.py
 │           └── DL_submit.py
 └── README.md
-
+```
 
 ## Environment & Path Setup
 
 Ensure that the environment variable `$HDA_SCRIPTS` is defined in your pipeline environment (e.g., your studio launcher, wrapper, or `houdini.env`):
 
-```bash
+
 # Example environment setting
+```bash
 export HDA_SCRIPTS="/path/to/your/global/scripts"
 ```
 
 The tool expects the package modules to reside at:
-
 ```text
 ${HDA_SCRIPTS}/houdini/python/houdini_opengl_flipbook
 ```
 
 ---
-
 ## HDA Configuration
 
 ### 1. Parameter Callbacks
@@ -62,7 +61,6 @@ Configure your HDA parameter buttons to point to the Python Module (`hou.phm()`)
 | **Submit Render to Deadline** | `hou.phm().deadlineSubmitter(kwargs)` | Triggers validation and submits the flipbook job to Deadline. |
 
 ---
-
 ### 2. HDA Python Module (`hou.phm()`)
 
 Copy and paste the following script into the **Scripts > Python Module** tab inside your HDA's **Type Properties**:
@@ -125,4 +123,3 @@ def update(kwargs):
         traceback.print_exc()
         print("=" * 90)
 ```
-
