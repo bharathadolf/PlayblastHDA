@@ -1,12 +1,13 @@
-Houdini OpenGL Flipbook SubmitterA Houdini Digital Asset (HDA) integration and Python toolset designed to streamline OpenGL flipbook rendering and deadline submission directly within SideFX Houdini.Overview
-
-This repository contains the external Python scripts that drive the Houdini Digital Asset (HDA). 
-
-The asset acts as a lightweight interface, delegating execution and logic to an external module location ($HDA_SCRIPTS) to enable live code updates without needing to rebuild or re-save the HDA.
-FeaturesLive Code Reloading: Dynamically purges cached Python modules (sys.modules) during execution, allowing developers to push Python updates instantly without restarting Houdini sessions.
+Houdini OpenGL Flipbook Submitter
+A Houdini Digital Asset (HDA) integration and Python toolset designed to streamline OpenGL flipbook rendering and deadline submission directly within SideFX Houdini.
+Overview
+This repository contains the external Python scripts that drive the Houdini Digital Asset (HDA). The asset acts as a lightweight interface, delegating execution and logic to an external module location ($HDA_SCRIPTS) to enable live code updates without needing to rebuild or re-save the HDA.
+Features
+Live Code Reloading: Dynamically purges cached Python modules (sys.modules) during execution, allowing developers to push Python updates instantly without restarting Houdini sessions.
 Deadline Integration: Direct callback submission to AWS Thinkbox Deadline for network rendering and flipbook management.
-Detailed Error Handling: Includes full traceback and diagnostic logging to facilitate rapid debugging in the Houdini Python shell/console.Repository Structure.
-
+Detailed Error Handling: Includes full traceback and diagnostic logging to facilitate rapid debugging in the Houdini Python shell/console.
+Repository Structure
+.
 ├── houdini/
 │   └── python/
 │       └── houdini_opengl_flipbook/
@@ -15,21 +16,30 @@ Detailed Error Handling: Includes full traceback and diagnostic logging to facil
 │           └── DL_submit.py
 └── README.md
 
+
+
 Environment & Path Setup
 Ensure that the environment variable $HDA_SCRIPTS is defined in your pipeline or Houdini environment setup (houdini.env or launcher environment):
-
 # Example environment setting
 export HDA_SCRIPTS="/path/to/your/global/scripts"
 
-The script expects the package to reside at: 
 
-${HDA_SCRIPTS}/houdini/python/houdini_opengl_flipbook
-HDA Callback ConfigurationThe HDA utilizes Houdini's Python Module (hou.phm()) to trigger callbacks for user actions.
-Button / ParameterCallback ScriptDescriptionUpdatehou.phm().update(kwargs)Reloads submodules and executes UI parameter updates.
-Submit Render to Deadlinehou.phm().deadlineSubmitter(kwargs)Triggers the Deadline submission process.
-HDA Python Module (hou.phm()) CodeCopy and paste the following Python script into the Python Module tab inside your HDA's Type Properties:
 
-```
+The script expects the package to reside at: ${HDA_SCRIPTS}/houdini/python/houdini_opengl_flipbook
+HDA Callback Configuration
+The HDA utilizes Houdini's Python Module (hou.phm()) to trigger callbacks for user actions.
+Button / Parameter
+Callback Script
+Description
+Update
+hou.phm().update(kwargs)
+Reloads submodules and executes UI parameter updates.
+Submit Render to Deadline
+hou.phm().deadlineSubmitter(kwargs)
+Triggers the Deadline submission process.
+
+HDA Python Module (hou.phm()) Code
+Copy and paste the following Python script into the Python Module tab inside your HDA's Type Properties:
 import sys
 import os
 import runpy
@@ -84,4 +94,6 @@ def update(kwargs):
         print("ERROR: Failed to execute update")
         print(f"Exception Type: {type(e).__name__}")
         print(f"Exception Message
-```
+
+
+
